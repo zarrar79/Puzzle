@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+<body class="body">
+    <!-- parent -->
+    <div class="parent">
+        <!-- header -->
+        <div class="header">Puzzle Game</div>
+        <!-- timer -->
+        <label class="label">Time Remaining:</label><div id="timer" class="timer">30</div>
+        <button id="btn" onclick="startTimer()" class="timer">Start</button>
+        <!-- buttons -->
+        <div class="box-container">
+            <!-- row 1 -->
+            <div class="box-row">
+                <!-- box 1 -->
+                <div id="box_1"  class="box" draggable="true"><div></div>               
+                </div>
+                <!-- box 2 -->
+                <div id="box_2" class="box" draggable="true"></div>
+                <!-- box 3 -->
+                <div id="box_2" class="box" draggable="true"></div>
+            </div>
+            <!-- row 2 -->
+            <div  class="box-row">
+                <!-- box 1 -->
+                <div id="box_4" class="box" draggable="true"></div>
+                <!-- box 2 -->
+                <div id="box_5"  class="box" draggable="true"></div>
+                <!-- box 3 -->
+                <div id="box_6" class="box" draggable="true"></div>
+            </div>
+            <!-- row 3 -->
+            <div id="box_3" class="box-row">
+                <!-- box 1 -->
+                <div id="box_7" class="box" draggable="true"></div>
+                <!-- box 2 -->
+                <div id="box_8" class="box" draggable="true"></div>
+                <!-- box 3 -->
+                <div id="box_9" class="box" draggable="true"></div>
+            </div>
+        </div>
+        <button onclick="orderCheck()" disabled id="check_result" class="timer">Check</button>  
+    </div> 
+    <script>
+       var boxes = document.querySelectorAll('.box');
+       var containers = document.querySelectorAll('.box-row');
+    var numbers = []; 
+    var order = [];
+     var check = true;
+        var seconds = 30;
+        var timerElement = document.getElementById('timer');
+        var button = document.getElementById('btn');
+        var check_result = document.getElementById('check_result');
+        function startTimer() {
+            check_result.disabled = false;
+            button.textContent = "Game started";
+            button.disabled = true;
+            setTimeout(function(){
+                
+                --seconds;
+                timerElement.textContent = seconds < 10 ? '0' + seconds : seconds;
+                if(seconds==-1){
+                    button.disabled = false;
+                    seconds = 30;
+                    timerElement.textContent = "30";
+                    button.textContent = "Start"
+                    return;
+                }
+                startTimer();
+            }, 1000);
+        }
+        function randomNumbers() {
+    
+
+    while (numbers.length < 9) {
+        let number = Math.ceil(Math.random() * 9);
+        if (!numbers.includes(number)) {
+            numbers.push(number);
+        }
+    }
+
+    boxes.forEach(function(box, index) {
+        box.textContent = numbers[index];
+    });
+}
+ randomNumbers();
+
+ // Add event listeners for drag and drop functionality
+boxes.forEach(box => {
+    box.addEventListener('dragstart', handleDragStart);
+    box.addEventListener('dragenter', handleDragEnter);
+    box.addEventListener('dragover', handleDragOver);
+    box.addEventListener('dragleave', handleDragLeave);
+    box.addEventListener('drop', handleDrop);
+    box.addEventListener('dragend', handleDragEnd);
+});
+
+let draggedBox = null;
+
+function handleDragStart(event) {
+    draggedBox = event.target;
+    event.dataTransfer.setData('text/plain', event.target.textContent);
+    event.target.classList.add('dragging');
+}
+
+function handleDragEnter(event) {
+    if (event.target !== draggedBox) {
+        event.target.classList.add('drag-over');
+    }
+}
+
+function handleDragOver(event) {
+    event.preventDefault();
+}
+
+function handleDragLeave(event) {
+    event.target.classList.remove('drag-over');
+}
+
+function handleDrop(event) {
+    event.preventDefault();
+    if (event.target !== draggedBox) {
+        const data = event.dataTransfer.getData('text/plain');
+        draggedBox.textContent = event.target.textContent;
+        event.target.textContent = data;
+    }
+}
+
+function handleDragEnd() {
+    boxes.forEach(box => {
+        box.classList.remove('dragging');
+        box.classList.remove('drag-over');
+    });
+}
+function orderCheck() {
+    for (let i = 1; i <= 9; i++) {
+        if (boxes[i - 1].textContent != i.toString()) {
+            alert("You lost");
+            seconds = 0;
+            check_result.disabled = true;
+            randomNumbers();
+            updateBoxes();
+            return;
+        }
+    }
+    seconds = 0;
+    check_result.disabled = true;
+    alert("You won!");
+    updateBoxes();
+    randomNumbers();
+}
+function updateBoxes() {
+    numbers = []; // Clear the previous numbers array
+    // Generate new random numbers
+    while (numbers.length < 9) {
+        let number = Math.ceil(Math.random() * 9);
+        if (!numbers.includes(number)) {
+            numbers.push(number);
+        }
+    }
+    // Update the boxes with new numbers
+    boxes.forEach(function(box, index) {
+        box.textContent = numbers[index];
+    });
+}
+
+
+
+
+
+
+            </script>
+</body>
+</html>
