@@ -8,8 +8,8 @@
     <script src="index.js"></script>
 </head>
 <body class="body">
-    <!-- parent -->
-    <div class="parent">
+     <!-- parent -->
+     <div class="parent">
         <!-- header -->
         <div class="header">Puzzle Game</div>
         <!-- timer -->
@@ -20,33 +20,53 @@
             <!-- row 1 -->
             <div class="box-row">
                 <!-- box 1 -->
-                <div id="box_1"  class="box"></div>
+                <div class="box-wrapper">
+                    <div id="box_1" class="box"></div>
+                </div>
                 <!-- box 2 -->
-                <div id="box_2" class="box" ></div>
+                <div class="box-wrapper">
+                    <div id="box_2" class="box"></div>
+                </div>
                 <!-- box 3 -->
-                <div id="box_2" class="box"></div>
+                <div class="box-wrapper">
+                    <div id="box_3" class="box"></div>
+                </div>
             </div>
             <!-- row 2 -->
-            <div  class="box-row">
-                <!-- box 1 -->
-                <div id="box_4" class="box"></div>
-                <!-- box 2 -->
-                <div id="box_5"  class="box"></div>
-                <!-- box 3 -->
-                <div id="box_6" class="box"></div>
+            <div class="box-row">
+                <!-- box 4 -->
+                <div class="box-wrapper">
+                    <div id="box_4" class="box"></div>
+                </div>
+                <!-- box 5 -->
+                <div class="box-wrapper">
+                    <div id="box_5" class="box"></div>
+                </div>
+                <!-- box 6 -->
+                <div class="box-wrapper">
+                    <div id="box_6" class="box"></div>
+                </div>
             </div>
             <!-- row 3 -->
-            <div id="box_3" class="box-row">
-                <!-- box 1 -->
-                <div id="box_7" class="box"></div>
-                <!-- box 2 -->
-                <div id="box_8" class="box"></div>
-                <!-- box 3 -->
-                <div id="box_9" class="box"></div>
+            <div class="box-row">
+                <!-- box 7 -->
+                <div class="box-wrapper">
+                    <div id="box_7" class="box"></div>
+                </div>
+                <!-- box 8 -->
+                <div class="box-wrapper">
+                    <div id="box_8" class="box"></div>
+                </div>
+                <!-- box 9 -->
+                <div class="box-wrapper">
+                    <div id="box_9" class="box"></div>
+                </div>
             </div>
         </div>
+        <div id="check_div">
         <button onclick="orderCheck()" disabled id="check_result" class="timer">Check</button>  
-    </div> 
+    </div>
+</div> 
     <script>
        var boxes = document.querySelectorAll('.box');
        var containers = document.querySelectorAll('.box-row');

@@ -1,5 +1,5 @@
 .body {
-    background-color: green;
+    background-color: #7368e8;
     height: 100vh;
     margin: 0;
     display: flex;
@@ -8,11 +8,11 @@
 }
 
 .parent {
-    max-width: 25%;
-    border: 1px solid yellow;
+    background-color:white;
+    width: 18%;
+    border: 4px solid black;
     border-radius: 10px;
     padding: 10px;
-    width:20%;
 }
 
 .header {
@@ -45,10 +45,11 @@
 }
 
 .box {
+    border-radius:6px;
     cursor:pointer;
     width: 30%;
     height: 50px;
-    background-color: blue;
+    background-color: #4a39ef;
 }
 .box_1,.box_2,.box_3,.box_4,.box_5,.box_6,.box_7,.box_8,.box_9{
     margin-top:1rem;
@@ -58,4 +59,36 @@
 .label{
     font-size:16px;
     color:white;
+}
+#btn,#check_result{
+    margin-top:2px;
+    border-radius:6px;
+}
+/* Add flexbox properties to center the content */
+.box-row {
+    display: flex;
+    justify-content: center;
+}
+
+.box-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px; /* Adjust margin as needed */
+    width: 50px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+}
+
+.box {
+    /* Optional styling for the box */
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 50px; /* Adjust line-height to vertically center the text */
+}
+#check_div{
+    margin-top:10px;
+    width:100%;
+    display:flex;
+    justify-content:end;
 }
