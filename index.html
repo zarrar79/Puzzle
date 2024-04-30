@@ -13,7 +13,7 @@
         <!-- header -->
         <div class="header">Puzzle Game</div>
         <!-- timer -->
-        <label class="label">Time Remaining:</label><div id="timer" class="timer">30</div>
+        <label class="label">Time Remaining:</label><div id="timer" class="timer">30 seconds</div>
         <button id="btn" onclick="startTimer()" class="timer">Start</button>
         <!-- buttons -->
         <div class="box-container">
@@ -65,7 +65,7 @@
             setTimeout(function(){
                 
                 --seconds;
-                timerElement.textContent = seconds < 10 ? '0' + seconds : seconds;
+                timerElement.textContent = seconds < 10 ? '0' + seconds+" sec(s)" : seconds+" sec(s)";
                 if(seconds==-1){
                     button.disabled = false;
                     seconds = 30;
