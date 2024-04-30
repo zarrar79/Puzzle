@@ -20,30 +20,30 @@
             <!-- row 1 -->
             <div class="box-row">
                 <!-- box 1 -->
-                <div id="box_1"  class="box" draggable="true"><div></div>               
+                <div id="box_1"  class="box" draggable="false"><div></div>               
                 </div>
                 <!-- box 2 -->
-                <div id="box_2" class="box" draggable="true"></div>
+                <div id="box_2" class="box" draggable="false"></div>
                 <!-- box 3 -->
-                <div id="box_2" class="box" draggable="true"></div>
+                <div id="box_2" class="box" draggable="false"></div>
             </div>
             <!-- row 2 -->
             <div  class="box-row">
                 <!-- box 1 -->
-                <div id="box_4" class="box" draggable="true"></div>
+                <div id="box_4" class="box" draggable="false"></div>
                 <!-- box 2 -->
-                <div id="box_5"  class="box" draggable="true"></div>
+                <div id="box_5"  class="box" draggable="false"></div>
                 <!-- box 3 -->
-                <div id="box_6" class="box" draggable="true"></div>
+                <div id="box_6" class="box" draggable="false"></div>
             </div>
             <!-- row 3 -->
             <div id="box_3" class="box-row">
                 <!-- box 1 -->
-                <div id="box_7" class="box" draggable="true"></div>
+                <div id="box_7" class="box" draggable="false"></div>
                 <!-- box 2 -->
-                <div id="box_8" class="box" draggable="true"></div>
+                <div id="box_8" class="box" draggable="false"></div>
                 <!-- box 3 -->
-                <div id="box_9" class="box" draggable="true"></div>
+                <div id="box_9" class="box" draggable="false"></div>
             </div>
         </div>
         <button onclick="orderCheck()" disabled id="check_result" class="timer">Check</button>  
@@ -59,6 +59,10 @@
         var button = document.getElementById('btn');
         var check_result = document.getElementById('check_result');
         function startTimer() {
+            
+    boxes.forEach(function(box, index) {
+        box.draggable = true;
+    });
             check_result.disabled = false;
             button.textContent = "Game started";
             button.disabled = true;
